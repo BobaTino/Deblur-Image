@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 from numpy.fft import fft2, ifft2
 from skimage.metrics import peak_signal_noise_ratio, structural_similarity
 
-# ---------- Helper Functions ----------
-
 def motion_blur_psf(size, angle):
     psf = np.zeros((size, size))
     psf[size // 2, :] = 1
@@ -37,8 +35,6 @@ def evaluate_metrics(original, restored):
     psnr = peak_signal_noise_ratio(original, restored, data_range=1.0)
     ssim = structural_similarity(original, restored, data_range=1.0)
     return psnr, ssim
-
-# ---------- Main ----------
 
 # Load image
 image = cv2.imread("image\\lion.png", cv2.IMREAD_GRAYSCALE)
@@ -71,8 +67,6 @@ for lambd in lambda_values:
     ssim_scores.append(ssim)
     print(f"λ={lambd} → PSNR: {psnr:.2f} dB | SSIM: {ssim:.4f}")
 
-# ---------- Display Side-by-Side Images ----------
-
 # Set number of rows and columns
 total_images = len(results) + 2  # original + blurred + restored
 cols = 3
@@ -104,8 +98,6 @@ for i, (lambd, restored) in enumerate(results):
 
 plt.tight_layout()
 plt.show()
-
-# ---------- Plot PSNR and SSIM vs Lambda ----------
 
 plt.figure(figsize=(10, 4))
 plt.subplot(1, 2, 1)
