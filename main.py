@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import math
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 from numpy.fft import fft2, ifft2
@@ -42,7 +41,7 @@ def evaluate_metrics(original, restored):
 # ---------- Main ----------
 
 # Load image
-image = cv2.imread("image\\city.png", cv2.IMREAD_GRAYSCALE)
+image = cv2.imread("image\\lion.png", cv2.IMREAD_GRAYSCALE)
 if image is None:
     raise FileNotFoundError("Image not found.")
 image = image.astype(np.float32) / 255.0
